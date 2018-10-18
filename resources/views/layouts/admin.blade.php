@@ -69,9 +69,9 @@ font-weight: lighter;}
 
 
 
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
+    <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
     
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a> -->
+    <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
 
     
 

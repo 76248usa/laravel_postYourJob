@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Role;
+use App\Photo;
 
 
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id', 'photo_id'
+        'name', 'email', 'password','role_id', 'photo_id',
     ];
 
    
@@ -34,6 +35,10 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo('App\Role');
+    }
+
+    public function photo(){
+        return $this->belongsTo('App\Photo');
     }
 
 

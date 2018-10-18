@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\User;
+use App\Photo;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class UsersRequest extends FormRequest
