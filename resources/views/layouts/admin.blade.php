@@ -14,6 +14,10 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif;
 font-weight: lighter;}
+
+.img-circle {
+  border-radius: 50%;
+}
 </style>
 <body class="w3-light-grey">
 
@@ -45,9 +49,23 @@ font-weight: lighter;}
                                                      document.getElementById('logout-form').submit();">
                                             Logout
       </a>
+
+      <div class="img-thumbnail img-circle">
+  <div style="position: relative; padding: 0; cursor: pointer;" type="file">
+    <img src="/images/{{Auth::user()->photo ? $user->photo->file : '1539875862avatar.png'}}" class="img-circle" style="width: 140px; height: 140px;" >
+    <span style="position: absolute; color: red; bottom: 20px; left: 40px;"></span>
+  </div>
+</div>
+
+    
+
+
+
       <form id="logout-form" action="#" method="POST" style="display: none;">
                                             {{ csrf_field() }}
       </form>
+
+     
 
     </div>
 
@@ -72,8 +90,6 @@ font-weight: lighter;}
     <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
     
     <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
-
-    
 
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>

@@ -8,6 +8,11 @@ use App\Photo;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
+use App\Http\Requests\UsersEditRequest;
+
+//use ImageIntervention;
+//use Image;
+//use Illuminate\Support\Facades\Auth;
 
 class AdminUsersController extends Controller
 {
@@ -60,6 +65,8 @@ class AdminUsersController extends Controller
 
         User::create($input);
 
+        return redirect('/admin/users');
+
         
 
 
@@ -84,7 +91,11 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.edit');
+        $user = User::findOrFail($id);
+
+        $roles = Role::pluck('name', 'id')->all();
+
+        return view('admin.users.edit', compact('user','roles'));
     }
 
     /**
@@ -94,9 +105,39 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersEditRequest $request, $id)
     {
-        //
+
+        if(trim($request->password) == ''){
+
+            $input = $request->except('password');
+
+        } else {
+
+            $input['password'] = bcrypt($request->password);
+
+            $input = $request->all();
+
+        }
+
+        $user = User::findOrFail($id);
+
+        $input = $request->all();
+
+        if($file = $request->file('photo_id')){
+
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $photo = Photo::create(['file'=>$name]);
+
+            $input['photo_id'] = $photo->id;
+        }
+
+       $user->update($input);
+
+        return redirect('admin/users');
     }
 
     /**
@@ -109,4 +150,29 @@ class AdminUsersController extends Controller
     {
         //
     }
+
+    
+
+
+
+    // public function profile(){
+    // 	return view('profile', array('user' => Auth::user()) );
+    // }
+
+    // public function update_avatar(Request $request){
+
+    // 	// Handle the user upload of avatar
+    // 	if($request->hasFile('avatar')){
+    // 		$avatar = $request->file('avatar');
+    // 		$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    // 		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+
+    // 		$user = Auth::user();
+    // 		$user->avatar = $filename;
+    // 		$user->save();
+    // 	}
+
+    // 	return view('profile', array('user' => Auth::user()) );
+
+    // }
 }
