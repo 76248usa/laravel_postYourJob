@@ -5,7 +5,6 @@ namespace App;
 use App\Role;
 use App\Photo;
 
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -22,13 +21,26 @@ class User extends Authenticatable
         'name', 'email', 'password','role_id', 'photo_id'
     ];
 
-   
+   //public function setPasswordAttribute($password){
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    // if(!empty($password)){
+
+    //     $this->attributes['password'] = bcrypt($password);
+    // }
+   //}
+
+   public function isAdmin(){
+
+    if($this->role->name == 'admin'){
+
+        return true;
+    }
+
+    return false;
+
+   }
+
+    
     protected $hidden = [
         'password', 'remember_token',
     ];

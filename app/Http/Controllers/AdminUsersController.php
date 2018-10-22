@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Photo;
+use Alert;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
+use Illuminate\Support\Facades\Session;
 
 //use ImageIntervention;
 //use Image;
@@ -18,7 +20,7 @@ class AdminUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -65,10 +67,9 @@ class AdminUsersController extends Controller
 
         User::create($input);
 
+        Alert::success('The user is successfully created!');
+
         return redirect('/admin/users');
-
-        
-
 
     }
 
@@ -122,7 +123,7 @@ class AdminUsersController extends Controller
 
         $user = User::findOrFail($id);
 
-        $input = $request->all();
+        
 
         if($file = $request->file('photo_id')){
 
@@ -135,9 +136,15 @@ class AdminUsersController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
+        $input['password'] = bcrypt($request->password);
+
        $user->update($input);
 
-        return redirect('admin/users');
+       Alert::success('The user was successfully updated!');
+
+       return redirect('admin/users');
+
+
     }
 
     /**
@@ -148,7 +155,19 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        unlink(public_path() . "/images/". $user->photo->file);
+
+        $user->delete();
+
+        Alert::success('The user was successfully deleted!');
+
+        return redirect('/admin/users');
+
+        //return redirect('/admin/users');
+
+
     }
 
     

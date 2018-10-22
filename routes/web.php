@@ -23,13 +23,14 @@ Route::get('admin', function(){
     return view('admin.index');
 });
 
-Route::resource('admin/users', 'AdminUsersController');
 
-//Route::get('profile', 'AdminUsersController@profile');
-//Route::post('profile', 'AdminUsersController@update_avatar');
 
-//Route::get('profile', 'AdminUsersController@profile')->name('profile');
-//Route::post('profile', 'AdminUsersController@update_avatar')->name('profile');
+Route::group(['middleware'=>'admin'], function(){
+
+    Route::resource('admin/users', 'AdminUsersController');
+    Route::resource('admin/posts', 'AdminPostsController');
+
+});
 
 
 
