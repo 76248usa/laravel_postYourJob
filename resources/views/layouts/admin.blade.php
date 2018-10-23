@@ -69,9 +69,6 @@ font-weight: lighter;}
 
     </div>
 
-    
-
-
   </div>
   <hr>
   <div class="w3-container">
@@ -90,6 +87,8 @@ font-weight: lighter;}
     <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
     
     <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
+    <a href="{{ route('posts.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create Post</a>
+    <a href="{{ route('posts.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  All Posts</a>
 
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>
@@ -154,21 +153,10 @@ font-weight: lighter;}
       </div>
     </div>  -->
 
-    <div class="w3-container">
-    <br>
- 
-  @yield('content')
-
-    </div>
-
-   </div>
-
   
-      
- 
-  <br>
-  <br>
-  
+    @yield('content')
+
+</div>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
