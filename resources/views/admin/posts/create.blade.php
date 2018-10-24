@@ -30,7 +30,7 @@ h2 {
 
     <div class="form-group">
         {!! Form::label('category_id', 'Category:') !!}
-        {!! Form::select('category_id', array(1=>'options',2 => 'Medical tech', 3=>'Pharmacy tech', 4=>'Dental tech', 5=>'Veterinarian tech'), null, ['class'=>'form-control']) !!}
+        {!! Form::select('category_id', array(''=>'Choose Category') + $categories, null, ['class'=>'form-control']) !!}
     </div>
 
     <div class="form-group">

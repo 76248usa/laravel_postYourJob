@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PostsCreateRequest;
-use Illuminate\Support\Facades\Input;
-use App\Post;
 use App\Category;
-use Alert;
-use Auth;
+use Illuminate\Support\Facades\Input;
 
-class AdminPostsController extends Controller
+class AdminCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +15,9 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        $categories = Category::all();
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -30,8 +27,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.categories.create');
     }
 
     /**
@@ -40,18 +36,25 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostsCreateRequest $request)
+    public function store(Request $request)
     {
-        $user = Auth::user();
-
         $input = $request->all();
 
-        $user->posts()->create($input);
+        $categories = Category::all();
 
-        return redirect('/admin/posts');
+        if (Category::where('name', '=', Input::get('name'))->exists()) {
+            
+            return redirect('admin');
+         }
+         else 
+         {
+             Category::create($input);
+         }
+         return redirect('admin');
 
 
     }
+
 
     /**
      * Display the specified resource.
@@ -72,11 +75,7 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
-
-        $categories = Category::pluck('name', 'id')->all();
-
-        return view('admin.posts.edit', compact('post', 'categories'));
+        //
     }
 
     /**
@@ -88,12 +87,7 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = Input::except('_method', '_token');
-
-        Auth::user()->posts()->whereId($id)->first()->update($input);
-
-        return redirect('/admin/posts');
-
+        //
     }
 
     /**
@@ -104,9 +98,6 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        
-        Auth::user()->posts()->whereId($id)->first()->delete();
-        
-        return redirect('/admin/posts');
+        Category::findOrFail($id)->delete();
     }
 }

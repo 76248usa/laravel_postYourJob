@@ -71,12 +71,13 @@ overflow:hidden;
         </div>
         <div class="col col-xs-2 well text-center" style="padding:1px;">    
             <span class="label label-danger">Filter:</span>
-            <button id="ok"  class="btn btn-primary" data-class="btn btn-primary" onclick="filter('ok')"><i class="fa fa-user" aria-hidden="true"></i></button>
+            <button id="ok"  class="btn btn-primary" data-class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i></button>
             <button id="ban" class="btn btn-warning" data-class="btn btn-warning" onclick="filter('ban')"><i class="fa fa-ban" aria-hidden="true"></i></button>
             <button id="new" class="btn btn-success" data-class="btn btn-success" onclick="filter('new')"><i class="fa fa-check-square" aria-hidden="true"></i></button> 
         </div>
         <div class="col col-xs-2 text-right ">
-          <button type="button" class="btn  btn-success "> ADD NEW<i class="fa fa-plus-square" ></i></button>
+          
+          <a href="{{route('posts.create')}}" class="btn btn-success" title="addnew"   ><i class="fa fa-plus-square"   >Add New</i></a>
         </div>
         </div>
     </div>
@@ -88,8 +89,10 @@ overflow:hidden;
          <tr>
             <th class="avatar">photo</th>
             <th>title</th>
-            <th>description</th>
+            <th>category</th>
             <th>name</th>
+            <th>description</th>
+            <th>created</th>
             <th><em class="fa fa-cog"></em></th>
           </tr> 
          </thead>
@@ -101,14 +104,14 @@ overflow:hidden;
           <tr class="ok">
              <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1539875862avatar.png'}}" ></td>
              <td>{{$post->title}} </td>
-             <td>{{$post->body}} </td>
+             <td>{{$post->category ? $post->category->name : 'Uncategorized'}} </td>
              <td>{{$post->user->name}} </td>
-             <td>{{$post->category_id}} </td>
+             <td>{{str_limit($post->body, 45)}} </td>           
              <td>{{$post->created_at->diffForHumans()}} </td>
              <td align="center">
-               <a href="#" class="btn btn-primary" title="Edit"  ><i class="fa fa-pencil"></i></a>
+               <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary" title="Edit"  ><i class="fa fa-pencil"></i></a>
                <a href="#" class="btn btn-warning" title="ban"   ><i class="fa fa-ban"   ></i></a>
-               <a href="#" class="btn btn-danger"  title="delete"><i class="fa fa-trash" ></i></a>
+               <a href="{{route('posts.edit', $post->id)}}" class="btn btn-danger"  title="delete"><i class="fa fa-trash" ></i></a>
              </td>
           </tr>
 
