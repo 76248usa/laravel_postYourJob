@@ -95,7 +95,7 @@ overflow:hidden;
 
           <tr class="ok">
             <td>{{$category->id}} </td>
-             <td>{{$category->name}} </td>
+             <td><a href="{{route('categories.edit', $category->id)}}">{{$category->name}} </a></td>
              <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'no date'}} </td>           
              <td> </td>
              <td align="center">
@@ -128,7 +128,7 @@ overflow:hidden;
    			 <img src="https://pbs.twimg.com/profile_images/746779035720683521/AyHWtpGY_400x400.jpg">
  			</div>
             <div class="panel-footer">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"></i></a>
+               <a href="" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"></i></a>
                <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"   ></i></a>
                <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" ></i></a>
             </div>
@@ -198,20 +198,16 @@ overflow:hidden;
 
  <div class="form-group">
         {!! Form::label('name', 'Category Name:') !!}
-        {!! Form::text('name', null, ['class'=>'form-control']) !!}
+        {!! Form::text('name', null, 
+        ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::submit('Create Category', ['class'=>'btn btn-primary col-sm-6']) !!}
 </div>
 
-{{ Form::model($category, ['method' => 'DELETE', 'action' => ['AdminCategoriesController@destroy', $category->id]]) }}
+ {{ Form::close() }}
 
-<div class="form-group">
-{!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6'], ['id'=>'delete']) !!}
-</div>
-
-{{ Form::close() }}
 
 </div>
 
