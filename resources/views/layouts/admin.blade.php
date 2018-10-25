@@ -89,10 +89,13 @@ font-weight: lighter;}
     <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
     <a href="{{ route('posts.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create Post</a>
     <a href="{{ route('posts.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  All Posts</a>
+    <a href="{{ route('media.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  All Photos</a>
+    <a href=" route{{'media.upload'}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Upload Photos</a>
 
     <a href="{{route('categories.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Download Resume</a>
+    <br>
   </div>
 </nav>
 

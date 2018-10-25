@@ -56,22 +56,28 @@ overflow:hidden;
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css">
 <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
 
-
 <div class="container" style="margin-top:0px;">
 <div class="row">
-<div id="user" class="col-md-6" >
-
+<div id="user" class="col-md-12" >
   <div class="panel panel-primary panel-table animated slideInDown">
    <div class="panel-heading " style="padding:5px;">
         <div class="row">
-        
-        <div class="col col-xs-5 text-center">
-            <h1 class="panel-title">Category List</h1>
+        <div class="col col-xs-3 text-left">
+            <a href="#list" class="btn btn-default" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i>table</a>
+            <a href="#thumb" class="btn btn-default" aria-controls="thumb" role="tab" data-toggle="tab"><i class="fa fa-picture-o" aria-hidden="true"></i>card</a>
         </div>
-        
+        <div class="col col-xs-5 text-center">
+            <h1 class="panel-title">Post List</h1>
+        </div>
+        <div class="col col-xs-2 well text-center" style="padding:1px;">    
+            <span class="label label-danger">Filter:</span>
+            <button id="ok"  class="btn btn-primary" data-class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i></button>
+            <button id="ban" class="btn btn-warning" data-class="btn btn-warning" onclick="filter('ban')"><i class="fa fa-ban" aria-hidden="true"></i></button>
+            <button id="new" class="btn btn-success" data-class="btn btn-success" onclick="filter('new')"><i class="fa fa-check-square" aria-hidden="true"></i></button> 
+        </div>
         <div class="col col-xs-2 text-right ">
           
-          <a href="#" class="btn btn-success" title="addnew"   ><i class="fa fa-plus-square"   ></i></a>
+          <a href="#" class="btn btn-success" title="addnew"   ><i class="fa fa-plus-square"   >Add New</i></a>
         </div>
         </div>
     </div>
@@ -79,39 +85,47 @@ overflow:hidden;
      <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="list">
        <table class="table table-striped table-bordered table-list">
+
+       @if($photos)
+
+        @foreach($photos as $photo)
+
         <thead>
          <tr>
-            <th>Id</th>
-            <th>name</th>
+            <th class="avatar">photo</th>
+            <th>title</th>
+            <th>description</th>
             <th>created</th>
             <th><em class="fa fa-cog"></em></th>
           </tr> 
          </thead>
          <tbody>
 
-         @if($category)
-
           <tr class="ok">
-            <td>{{$category->id}} </td>
-             <td><a href="{{route('categories.edit', $category->id)}}">{{$category->name}} </a></td>
-             <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'no date'}} </td>           
-             <td> </td>
+             <td class="avatar"><img src="/images/{{$photo ? $photo->file : '1539875862avatar.png'}}" ></td>
+             <td>{{$photo->file}} </td>
+             <td>{{$photo->user->name}}</td>
+             <td>{{$photo->created_at}} </td>
+             
              <td align="center">
                <a href="#" class="btn btn-primary" title="Edit"  ><i class="fa fa-pencil"></i></a>
                <a href="#" class="btn btn-warning" title="ban"   ><i class="fa fa-ban"   ></i></a>
                <a href="#" class="btn btn-danger"  title="delete"><i class="fa fa-trash" ></i></a>
              </td>
           </tr>
-@endif
+
+            @endforeach
+
+          @endif 
+
+
           
           
           </tbody>
         </table>
       </div><!-- END id="list" -->
-
-
-       
-      <!-- <div role="tabpanel" class="tab-pane " id="thumb">
+        
+      <div role="tabpanel" class="tab-pane " id="thumb">
         <div class="row">
         <div class="col-md-12">
         
@@ -125,9 +139,9 @@ overflow:hidden;
    			 <img src="https://pbs.twimg.com/profile_images/746779035720683521/AyHWtpGY_400x400.jpg">
  			</div>
             <div class="panel-footer">
-               <a href="{{route('categories.edit', $category->id)}}" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"></i></a>
-               
-               <a href="{{route('categories.edit', $category->id)}}" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" ></i></a>
+               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"></i></a>
+               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"   ></i></a>
+               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" ></i></a>
             </div>
          </div>
 		 </div>
@@ -161,60 +175,33 @@ overflow:hidden;
    			 <img src="https://pbs.twimg.com/profile_images/3023221270/fcb34337f850c1037af9840ebe510d36_400x400.jpeg">
  			</div>
             <div class="panel-footer">
-               <a href="{{route('categories.edit', $category->id)}}" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"	  >		</i></a>
+               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"	  >		</i></a>
         	   <a href="#" class="btn btn-success" title="validate"><i class="fa fa-check-square">validate</i></a>
                <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"		 >		</i></a>
-               <a href="{{route('categories.edit', $category->id)}}" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash"	   >		</i></a>
+               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash"	   >		</i></a>
             </div>
-         </div> 
+         </div>
 		 </div>
        </div>
-    
+       
        </div>
       </div>
-      </div>
+      </div><!-- END id="thumb" -->
        
-     </div>
+     </div><!-- END tab-content --> 
     </div>
    
-   <div class="panel-footer text-center">-->
-   		
+   <div class="panel-footer text-center">
+   		<ul class="pagination">
+	 	  <li ><a>«</a></li>
+		   <li class="active"><a href="#">1</a></li>
+           <li ><a href="#">2</a></li>
+           <li ><a href="#">3</a></li>
+		   <li ><a>»</a></li>
+         </ul>
    </div>
-  </div>
-</div> 
-
-
- <div class="col-md-12">
-
-{{ Form::model($category, ['method' => 'PUT', 'action' => ['AdminCategoriesController@update', $category->id]] ) }}
-
-<div class="form-group">
-       {!! Form::label('name', 'Category Name:') !!}
-       {!! Form::text('name', null, ['class'=>'form-control']) !!}
+  </div><!--END panel-table-->
 </div>
-
-<div class="form-group">
-   {!! Form::submit('Update Category', ['class'=>'btn btn-primary col-sm-6']) !!}
-</div>
-
-{{ Form::close() }}
-
-
-{{ Form::open(['method' => 'DELETE', 'action' => ['AdminCategoriesController@destroy', $category->id]]) }}
-
-<div class="form-group">
-  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}
-</div>
-
-{{ Form::close() }}
-
-
-
-</div>
-
-
-
-
 </div>
 </div>
 
@@ -234,8 +221,5 @@ if (btn.className == "btn"){
 }
 
 </script>
-
-</div>
-
 
 @endsection

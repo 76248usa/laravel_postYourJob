@@ -100,7 +100,7 @@ overflow:hidden;
              <td> </td>
              <td align="center">
                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-primary" title="Edit"  ><i class="fa fa-pencil"></i></a>
-               <a href="#" class="btn btn-warning" title="ban"   ><i class="fa fa-ban"   ></i></a>
+               
                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-danger"  title="delete"><i class="fa fa-trash" ></i></a>
              </td>
           </tr>
