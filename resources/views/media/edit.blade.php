@@ -90,9 +90,10 @@ overflow:hidden;
       <div role="tabpanel" class="tab-pane active" id="list">
        <table class="table table-striped table-bordered table-list">
 
-       @if($photos)
+       
+      
 
-       @foreach($photos as $photo)
+       @if($photo)
 
         <thead>
          <tr>
@@ -108,25 +109,15 @@ overflow:hidden;
           <tr id="delid" class="ok">
              <td class="avatar"><img src="/images/{{$photo ? $photo->file : '1539875862avatar.png'}}" ></td>
              <td>{{$photo->file}} </td>
-             <td> {{ $photo->id }} </td>
+             <td value="{{ $photo->id}}"> {{ $photo->id }} </td>
              <td>{{$photo->created_at}} </td>
-
-             <td>
-             {{ Form::open(['method' => 'DELETE', 'action' => ['AdminMediasController@destroy', $photo->id]] ) }}
-
-             <tr>
-					    <td colspan="2"><button type="submit" class="btn btn-danger"> Delete </button> </td>
-				    </tr>
-
-            {{ Form::close() }}
              
-             
+             <td align="center">
+               <a href="#" class="btn btn-primary" title="Edit"  ><i class="fa fa-pencil"></i></a>
+               <a href="#" class="btn btn-warning" title="ban"   ><i class="fa fa-ban"   ></i></a>
+               <a id="delete"  class="btn btn-danger"  title="delete"><i class="fa fa-trash" ></i></a>
              </td>
-             
-             
           </tr>
-
-          @endforeach
 
           @endif 
 
@@ -218,6 +209,12 @@ overflow:hidden;
 </div>
 
 <script>
+function myFunction() {
+    document.getElementById("delete").delete();
+}
+</script>
+
+<script>
 function filter($state){
 var x   = document.getElementsByClassName($state);
 var btn = document.getElementById($state);
@@ -233,7 +230,6 @@ if (btn.className == "btn"){
 }
 
 </script>
-
 
 @endsection
 
