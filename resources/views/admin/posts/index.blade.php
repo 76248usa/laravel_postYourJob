@@ -102,7 +102,7 @@ overflow:hidden;
         @foreach($posts as $post)
 
           <tr class="ok">
-             <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1539875862avatar.png'}}" ></td>
+             <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png'}}" ></td>
              <td>{{$post->title}} </td>
              <td>{{$post->category ? $post->category->name : 'Uncategorized'}} </td>
              <td>{{$post->user->name}} </td>

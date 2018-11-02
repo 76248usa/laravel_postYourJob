@@ -54,7 +54,7 @@ font-weight: lighter;}
 
       <div class="img-thumbnail img-circle">
   <div style="position: relative; padding: 0; cursor: pointer;" type="file">
-    <img src="/images/{{Auth::user()->photo ? $user->photo->file : '1539875862avatar.png'}}" class="img-circle" style="width: 140px; height: 140px;" >
+    <img src="/images/{{Auth::user()->photo ? $user->photo->file : '1540743667Avatar2.png'}}" class="img-circle" style="width: 140px; height: 140px;" >
     <span style="position: absolute; color: red; bottom: 20px; left: 40px;"></span>
   </div>
 </div>
@@ -79,7 +79,7 @@ font-weight: lighter;}
    <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  All Posts</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
+    <a href="{{ route('posts.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
     
 
     
@@ -95,7 +95,7 @@ font-weight: lighter;}
     <a href="{{ route('media.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Upload Photos</a>
 
     <a href="{{route('categories.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>
+    <a href="{{route('applied.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications Received</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Download Resume</a>
     <br>
   </div>
@@ -159,7 +159,7 @@ font-weight: lighter;}
     </div>  -->
 
   
-    @yield('content')
+  @yield('content')
 
 </div>
 

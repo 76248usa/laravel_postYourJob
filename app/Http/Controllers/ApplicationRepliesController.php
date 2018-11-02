@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PostsCreateRequest;
-use Illuminate\Support\Facades\Input;
-use App\Post;
-use App\Category;
-use App\Experience;
-use Alert;
-use Auth;
 
-class AdminPostsController extends Controller
+class ApplicationRepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +13,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        //
     }
 
     /**
@@ -31,8 +23,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.create', compact('categories'));
+        //
     }
 
     /**
@@ -41,17 +32,9 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostsCreateRequest $request)
+    public function store(Request $request)
     {
-        $user = Auth::user();
-
-        $input = $request->all();
-
-        $user->posts()->create($input);
-
-        return redirect('/admin/posts');
-
-
+        //
     }
 
     /**
@@ -73,11 +56,7 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
-
-        $categories = Category::pluck('name', 'id')->all();
-
-        return view('admin.posts.edit', compact('post', 'categories'));
+        //
     }
 
     /**
@@ -89,12 +68,7 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = Input::except('_method', '_token');
-
-        Auth::user()->posts()->whereId($id)->first()->update($input);
-
-        return redirect('/admin/posts');
-
+        //
     }
 
     /**
@@ -105,19 +79,6 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        
-        Auth::user()->posts()->whereId($id)->first()->delete();
-        
-        return redirect('/admin/posts');
-    }
-
-    public function post($id){
-
-        $post = Post::findOrFail($id);
-
-        $experiences = Experience::all();
-
-        return view('post', compact('post', 'experiences'));
-
+        //
     }
 }

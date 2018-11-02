@@ -24,6 +24,7 @@ Route::get('admin', function(){
 });
 
 
+Route::get('post/{id}', 'AdminPostsController@post')->name('home.post');
 
 Route::group(['middleware'=>'admin'], function(){
 
@@ -31,11 +32,12 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/media', 'AdminMediasController');
-    Route::post('admin/deletedata', 'AdminMediasController@deletedata');
-   
+    Route::resource('admin/applied', 'AdminAppliedController');
     
-
 });
+
+Route::resource('applications', 'PostApplicationsController');
+Route::resource('application/replies', 'ApplicationRepliesController');
 
 
 

@@ -1,25 +1,14 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.7/dist/sweetalert2.min.css">
-<h2>Create Post</h2>
-
-<style>
-h2 {
-    text-align: center;
-}
-</style>
 
 <div class="jumbotron">
 <div class="container">
 
-    {{ Form::open(['method' => 'POST', 'action' => 'AdminPostsController@store']) }}
+    {{ Form::open(['method' => 'POST', 'action' => 'AdminPostsController@store', 'files'=>true]) }}
 
     <div class="form-group">
-        {!! Form::label('title', 'name:') !!}
+        {!! Form::label('title', 'Title:') !!}
         {!! Form::text('title', null, ['class'=>'form-control']) !!}
     </div>
 
@@ -90,3 +79,6 @@ if(has_errors){
 
 @endsection
 
+
+
+@endsection

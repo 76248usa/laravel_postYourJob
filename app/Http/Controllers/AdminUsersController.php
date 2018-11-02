@@ -194,4 +194,6 @@ class AdminUsersController extends Controller
     // 	return view('profile', array('user' => Auth::user()) );
 
     // }
+
+    
 }

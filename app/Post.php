@@ -4,6 +4,7 @@ namespace App;
 
 use User;
 use Category;
+use Application;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,8 @@ class Post extends Model
         'title',
         'body',
         'category_id',
-        'user_id' 
+        'user_id',
+        'application_id' 
            
     ];
 
@@ -23,7 +25,15 @@ class Post extends Model
     }
 
     public function category(){
+
         return $this->belongsTo('App\Category');
+
+    }
+
+    public function application(){
+
+        return $this->belongsTo('App\Application');
+
     }
 
 }
