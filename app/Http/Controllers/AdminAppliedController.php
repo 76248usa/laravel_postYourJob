@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Application;
+use Auth;
+use App\Post;
+use App\Photo;
 
 class AdminAppliedController extends Controller
 {
@@ -13,7 +17,14 @@ class AdminAppliedController extends Controller
      */
     public function index()
     {
-        return view('admin/applied');
+        $user = Auth::user()->id;
+        $post = Post::find(1)->where('user_id', '=', $user)->first();
+        //$photo = Photo::find(1)->where('user_id', '=', $user)->first();
+        $applications = Application::take(50)->where('post_id', '=' , $post->id)->get();
+
+        //return $photo->file;
+    
+        return view('admin/applied', compact('applications','photo'));
     }
 
     /**

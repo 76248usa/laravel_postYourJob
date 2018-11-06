@@ -16,6 +16,7 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->index()->unsigned()->nullable();
+            $table->integer('user_id')->index()->unsigned()->nullable();
             $table->integer('experience')->index()->unsigned();
             $table->string('certified');
             $table->text('body');

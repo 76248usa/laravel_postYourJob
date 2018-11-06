@@ -19,12 +19,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   
     <!-- Left Column -->
     <div class="w3-third">
-    
+
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src=""  style="width:100%" alt="Avatar">
+          <img class="img-circle img-fluid" src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png' }}"  style="width:100%" alt="Avatar">
           <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>{{$application->name}}</h2>
+            <h2>{{$application->user->name}}</h2>
           </div>
         </div>
         <div class="w3-container">

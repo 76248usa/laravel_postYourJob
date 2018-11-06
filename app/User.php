@@ -5,6 +5,8 @@ namespace App;
 use App\Role;
 use App\Photo;
 use App\Post;
+use App\Application;
+
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +21,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id', 'photo_id'
+        'name', 
+        'email', 
+        'password',
+        'role_id', 
+        'photo_id', 
+        'post_id',
+        'application_id'
     ];
 
    //public function setPasswordAttribute($password){
@@ -51,11 +59,15 @@ class User extends Authenticatable
     }
 
     public function photo(){
-        return $this->belongsTo('App\Photo');
+        return $this->hasOne('App\Photo');
     }
 
     public function posts() {
         return $this->hasMany('App\Post');
+    }
+
+    public function application() {
+        return $this->belongsTo('App\Application');
     }
 
 

@@ -45,12 +45,17 @@ font-weight: lighter;}
                         
     </div>
     <div class="w3-col s8 w3-bar">
+
+      
+
       <span>Welcome, <strong>{{Auth::user()->name}}</strong></span><br>
       <a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
       </a>
+
+      
 
       <div class="img-thumbnail img-circle">
   <div style="position: relative; padding: 0; cursor: pointer;" type="file">

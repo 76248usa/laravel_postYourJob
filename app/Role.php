@@ -11,10 +11,10 @@ class Role extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'user_id'];
 
     public function users(){
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function employees(){

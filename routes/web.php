@@ -19,14 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin', function(){
-    return view('admin.index');
-});
-
 
 Route::get('post/{id}', 'AdminPostsController@post')->name('home.post');
 
 Route::group(['middleware'=>'admin'], function(){
+    
+    Route::get('admin', function() {
+        return view('admin.index');
+    });
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
@@ -41,3 +41,11 @@ Route::resource('application/replies', 'ApplicationRepliesController');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

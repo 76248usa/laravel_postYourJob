@@ -51,7 +51,7 @@
          <div class="card-body text-center">
          <p><img class="img-circle img-fluid" src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
         <p>Welcome, <p><h4 class="card-title">{{Auth::user()->name}}</h4>
-        <p class="card-text">{{$post->user->email}}</p>
+        <p class="card-text">{{Auth::user()->email}}</p>
         <a href="#" class="btn btn-primary" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-plus"></i>Logout</a>
 

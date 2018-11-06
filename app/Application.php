@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\ApplicationReply;
 use App\Post;
 use App\Experience;
+use App\User;
 
 
 class Application extends Model
@@ -18,7 +19,8 @@ class Application extends Model
         'body',
         'post_id',
         'cert_date',
-        'cert_number'
+        'cert_number',
+        'user_id'
         
     ];
 
@@ -36,5 +38,9 @@ class Application extends Model
     public function experience(){
 
         return $this->belongsTo('App\Experience');
+    }
+    public function user(){
+
+        return $this->belongsTo('App\User');
     }
 }

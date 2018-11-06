@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Application;
 use Auth;
+use App\User;
 
 
 class PostApplicationsController extends Controller
@@ -41,6 +42,7 @@ class PostApplicationsController extends Controller
 
         $data = [
             'post_id' => $request->post_id,
+            'user_id' => $user->id,
             'name' => $user->name,
             'email' =>$user->email,
             'body' => $request->body,
@@ -51,6 +53,9 @@ class PostApplicationsController extends Controller
         ];
 
         $application = Application::create($data);
+
+        //dd($application);
+        
         return redirect()->back();
 
        
@@ -70,6 +75,9 @@ class PostApplicationsController extends Controller
     public function show($id)
     {
         $application = Application::findOrFail($id);
+        
+
+        //dd($application);
 
         return view('applications.show', compact('application'));
     }
