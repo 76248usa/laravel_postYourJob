@@ -59,7 +59,8 @@ font-weight: lighter;}
 
       <div class="img-thumbnail img-circle">
   <div style="position: relative; padding: 0; cursor: pointer;" type="file">
-    <img src="/images/{{Auth::user()->photo ? $user->photo->file : '1540743667Avatar2.png'}}" class="img-circle" style="width: 140px; height: 140px;" >
+  
+     <img src="/images/{{Auth::user()->photo ? Auth::user()->photo->file : '1540743667Avatar2.png'}}" class="img-circle" style="width: 140px; height: 140px;" > 
     <span style="position: absolute; color: red; bottom: 20px; left: 40px;"></span>
   </div>
 </div>
