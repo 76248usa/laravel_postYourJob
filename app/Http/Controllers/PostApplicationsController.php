@@ -45,6 +45,7 @@ class PostApplicationsController extends Controller
             'user_id' => $user->id,
             'name' => $user->name,
             'email' =>$user->email,
+            'photo' => $user->photo->file,
             'body' => $request->body,
             'experience' => $request->experience,
             'cert_date' => $request->cert_date,

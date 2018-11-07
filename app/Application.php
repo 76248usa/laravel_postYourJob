@@ -20,7 +20,8 @@ class Application extends Model
         'post_id',
         'cert_date',
         'cert_number',
-        'user_id'
+        'user_id',
+        'photo'
         
     ];
 

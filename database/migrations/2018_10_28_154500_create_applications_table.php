@@ -21,6 +21,7 @@ class CreateApplicationsTable extends Migration
             $table->string('certified');
             $table->text('body');
             $table->string('name');
+            $table->string('photo');
             $table->string('email')->unique();
             $table->integer('cert_number')->default(null);
             $table->date('cert_date')->default(null);

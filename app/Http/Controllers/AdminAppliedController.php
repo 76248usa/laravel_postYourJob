@@ -19,12 +19,9 @@ class AdminAppliedController extends Controller
     {
         $user = Auth::user()->id;
         $post = Post::find(1)->where('user_id', '=', $user)->first();
-        //$photo = Photo::find(1)->where('user_id', '=', $user)->first();
         $applications = Application::take(50)->where('post_id', '=' , $post->id)->get();
-
-        //return $photo->file;
-    
-        return view('admin/applied', compact('applications','photo'));
+        
+        return view('admin/applied', compact('applications'));
     }
 
     /**

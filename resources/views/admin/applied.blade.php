@@ -167,6 +167,7 @@ section .section-title {
                                     <p><img class=" img-fluid" src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
                                     <h4 class="card-title">{{$application->name}}</h4>
                                     <p class="card-text">{{$application->email}}</p>
+                                    <p class="card-text">{{$application->user->name}}</p>
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
