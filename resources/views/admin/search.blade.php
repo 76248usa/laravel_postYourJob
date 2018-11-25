@@ -1,6 +1,15 @@
-@extends('layouts.admin')
 
-@section('content')
+<!doctype html>
+<html>
+<head>
+    <title>Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
 
 <style>
 /* FontAwesome for working BootSnippet :> */
@@ -133,45 +142,54 @@ section .section-title {
     border-radius: 50%;
 }
 </style>
+<body>
+    <form action="{{URL::to('admin/search')}}" method="POST" role="search">
+    {{ csrf_field() }}
+    <div class="input-group">
+        <input type="text" class="form-control" name="q" placeholder="Search..">
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+</form>
 
-
-
-
-  
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<!-- Team -->
 <section id="team" class="pb-5">
     <div class="container">
-        <h5 class="section-title h1">Users</h5>
+        <h5 class="section-title h1">Applicants</h5>
         <div class="row">
 
-        @if($users)
+        
+        @if(isset($details))
 
-            @foreach($users as $user)
+            @foreach($details as $application)
 
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-2">
+
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="/images/{{$user->photo ? $user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
-                                    <h4 class="card-title">{{$user->name}}</h4>
-                                    <p class="card-text">{{$user->email}}</p>
+                                    <p><img class=" img-fluid" src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
+                                   
+                                    <h4 class="card-title">{{$application->name}}</h4>
+                                    <p class="card-text">{{$application->email}}</p>
                                     <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
+
+                        <a href="{{ route('applications.show', $application->id ) }}">
+
+
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                   
+                                    <p class="card-text">{{$application->body}}</p>
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <a class="social-icon text-xs-center" target="_blank" href="#">
@@ -197,12 +215,19 @@ section .section-title {
                                 </div>
                             </div>
                         </div>
+
+                        </a>
+
                     </div>
+                    
                 </div>
             </div>
+            </a>
+
+           
             @endforeach
 
-            @endif
+          @endif  
 
            
                         
@@ -213,4 +238,6 @@ section .section-title {
 </section>
 <!-- Team -->
 
-@endsection
+
+</body>
+    

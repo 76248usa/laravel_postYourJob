@@ -21,6 +21,7 @@ class AdminPostsController extends Controller
     public function index()
     {
         $posts = Post::all();
+        //dd($posts);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -49,7 +50,7 @@ class AdminPostsController extends Controller
 
         $user->posts()->create($input);
 
-        return redirect('/admin/posts');
+        return redirect('/admin');
 
 
     }
@@ -62,7 +63,7 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -114,10 +115,9 @@ class AdminPostsController extends Controller
     public function post($id){
 
         $post = Post::findOrFail($id);
-
-        $experiences = Experience::all();
-
-        return view('post', compact('post', 'experiences'));
+        //dd($post);
+        $posts = Post::all();
+        return view('post', compact('post','posts'));
 
     }
 }

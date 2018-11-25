@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Photo;
+use App\Post;
 use Alert;
 
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         $users = User::all();
-
+        
         //dd($users);
 
         return view('admin.users.index', compact('users'));

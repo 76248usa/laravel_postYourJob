@@ -6,8 +6,6 @@
 
 
 <style>
-/* FontAwesome for working BootSnippet :> */
-
 
 #team {
     background: #eee !important;
@@ -121,7 +119,7 @@ section .section-title {
 }
 
 .backside .card a {
-    font-size: 18px;
+    font-size: 12px;
     color: #007b5e !important;
 }
 
@@ -137,12 +135,6 @@ section .section-title {
 }
 </style>
 
-  
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -151,65 +143,71 @@ section .section-title {
 <!-- Team -->
 <section id="team" class="pb-5">
     <div class="container">
+        
         <h5 class="section-title h1">Applications</h5>
+         
+
         <div class="row">
 
-        @if($applications)
+@if($applications)
 
-            @foreach($applications as $application)
- <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
-                                    <h4 class="card-title">{{$application->name}}</h4>
-                                    <p class="card-text">{{$application->email}}</p>
-                                    <p class="card-text">{{$application->user->name}}</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">{{$application->body}}</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+@foreach($applications as $application)
+
+<div class="col-xs-12 col-sm-6 col-md-2">
+    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+        <div class="mainflip">
+            <div class="frontside">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p><img class=" img-fluid" src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
+                        <h4 class="card-title">{{$application->name}}</h4>
+                        <p class="card-text">{{$application->email}}</p>
+                        <p class="card-text">{{$application->user->name}}</p>
+                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>
-            
-                @endforeach
-            @endif
+            <div class="backside">
+                <div class="card">
+                    <div class="card-body text-center mt-4">
+                        <h4 class="card-title">Sunlimetech</h4>
+                       <p class="card-text"> <a href="{{ route('applications.show', $application->id)}}">{{$application->body}}</p></a>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-skype"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="social-icon text-xs-center" target="_blank" href="#">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-           
+    @endforeach
+@endif 
+
+
+
+         
+
                         
             <!-- Team member -->
             

@@ -17,6 +17,11 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif;
 font-weight: lighter;}
 
+html {  
+    font-size: 12px;
+}
+
+
 .img-circle {
   border-radius: 50%;
 }
@@ -34,7 +39,7 @@ font-weight: lighter;}
 </div>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
 
@@ -49,6 +54,18 @@ font-weight: lighter;}
       
 
       <span>Welcome, <strong>{{Auth::user()->name}}</strong></span><br>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
       <a href="#"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -60,7 +77,7 @@ font-weight: lighter;}
       <div class="img-thumbnail img-circle">
   <div style="position: relative; padding: 0; cursor: pointer;" type="file">
   
-     <img src="/images/{{Auth::user()->photo ? Auth::user()->photo->file : '1540743667Avatar2.png'}}" class="img-circle" style="width: 140px; height: 140px;" > 
+     <img src="/images/{{Auth::user()->photo ? Auth::user()->photo->file : '1540743667Avatar2.png'}}" class="img-circle" style="width: 105px; height: 105px;" > 
     <span style="position: absolute; color: red; bottom: 20px; left: 40px;"></span>
   </div>
 </div>
@@ -87,11 +104,6 @@ font-weight: lighter;}
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  All Posts</a>
     <a href="{{ route('posts.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
     
-
-    
-
-
-
     <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
     
     <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>

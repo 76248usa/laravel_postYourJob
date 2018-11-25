@@ -97,13 +97,12 @@ overflow:hidden;
           </tr> 
          </thead>
          <tbody>
-         @if($posts)
-
+      @if($posts)
         @foreach($posts as $post)
 
           <tr class="ok">
-             <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png'}}" ></td>
-             <td>{{$post->title}} </td>
+          <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png'}}" ></td> 
+             <td>{{$post->title}}</a></td>
              <td>{{$post->category ? $post->category->name : 'Uncategorized'}} </td>
              <td>{{$post->user->name}} </td>
              <td>{{str_limit($post->body, 45)}} </td>           
@@ -116,8 +115,9 @@ overflow:hidden;
           </tr>
 
            @endforeach
+        @endif
 
-@endif
+
           <tr class="ban">
              <td class="avatar"><img src="https://pbs.twimg.com/profile_images/3511252200/f97a40336742d17609e0b0ca17e301b8_400x400.jpeg"></td>
              <td>Moh Aymen </td>

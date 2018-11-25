@@ -50,7 +50,13 @@ class PostApplicationsController extends Controller
             'experience' => $request->experience,
             'cert_date' => $request->cert_date,
             'cert_number'=>$request->cert_number,
-            'certified' => $request->certified
+            'certified' => $request->certified,
+            'skill_1' => $request->skill_1,
+            'skill_2' => $request->skill_2,
+            'skill_3' => $request->skill_3,
+            'skill_1_years' => $request->skill_1_years,
+            'skill_2_years' => $request->skill_2_years,
+            'skill_3_years' => $request->skill_3_years
         ];
 
         $application = Application::create($data);

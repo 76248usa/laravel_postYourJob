@@ -47,35 +47,25 @@
     <div class="col-sm-3 sidenav">
 
 
-    <div class="card">
+     <div class="card">
          <div class="card-body text-center">
-         <p><img class="img-circle img-fluid" src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
+         <p><img class="img-circle img-fluid" src="/images/{{Auth::user()->photo ? Auth::user()->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
         <p>Welcome, <p><h4 class="card-title">{{Auth::user()->name}}</h4>
         <p class="card-text">{{Auth::user()->email}}</p>
-        <a href="#" class="btn btn-primary" onclick="event.preventDefault();
+        <a href="{{ route('logout')}}" class="btn btn-primary" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-plus"></i>Logout</a>
-
-
 
         </div>
     </div>
-        
-      
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Friends</a></li>
-        <li><a href="#section3">Family</a></li>
-        <li><a href="#section3">Photos</a></li>
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
+    
+     <div class="card">
+      <div class="card-body text-center">
+      <h5><span class="label label-success">{{Auth::user()->name}}'s posted jobs : </span></h5>
+
       </div>
     </div>
+
+    </div>  
 
     <div class="col-sm-9">
       <h4><small>Job Post by <b>{{$post->user->name}}</b></small></h4>
@@ -88,6 +78,7 @@
       <br>
       <p>{{$post->body}}</p>
       <br><br>
+      
       
 
       <h3>Create an Application:</h3>
@@ -122,6 +113,36 @@
     {!! Form::date('cert_date', null, ['class'=>'form-control']) !!}
 </div>
 
+<div class="jumbotron">
+
+<h4><span class="label label-primary">List skills and years of experience in skill in the next section.</span></h4>
+<br>
+
+<div class="form-group">
+{!! Form::label('skill_1', 'List first skill:') !!}
+{!! Form::text('skill_1', null, ['class'=>'form-control', 'placeholder'=>'For example, Autocad design']) !!}
+<b>Years of experience in first skill </b>
+ {!! Form::selectRange('skill_1_years', 0, 20) !!}
+</div><br>
+
+<div class="form-group">
+{!! Form::label('skill_2', 'List second skill:') !!}
+{!! Form::text('skill_2', null, ['class'=>'form-control', 'placeholder'=>'For example, ESL teacher']) !!}
+<b>Years of experience in second skill </b>
+ {!! Form::selectRange('skill_2_years', 0, 20) !!}
+</div><br>
+
+<div class="form-group">
+{!! Form::label('skill_3', 'List third skill:') !!}
+{!! Form::text('skill_3', null, ['class'=>'form-control', 'placeholder'=>'For example, HTML programming']) !!}
+<b>Years of experience in third skill </b>
+ {!! Form::selectRange('skill_3_years', 0, 20) !!}
+</div>
+
+
+
+</div>
+
 <div class="form-group">
 <b>Years of experience as a </b> {{$post->category->name}}
  {!! Form::selectRange('experience', 0, 20) !!}
@@ -141,16 +162,8 @@
 
 {{ Form::close() }}
 
-
-   
-    
-   
-
 </div>
 </div>
-
-
-
 
 
 <script
@@ -166,44 +179,7 @@
 @include('sweet::alert')
 
       
-      <p><span class="badge">2</span> Comments:</p><br>
       
-      <div class="row">
-        <div class="col-sm-2 text-center">
-          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
-          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-        </div>
-        <div class="col-sm-2 text-center">
-          <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-        </div>
-        <div class="col-sm-10">
-          <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
-          <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <br>
-          <p><span class="badge">1</span> Comment:</p><br>
-          <div class="row">
-            <div class="col-sm-2 text-center">
-              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-            </div>
-            <div class="col-xs-10">
-              <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-              <p>Me too! WOW!</p>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>

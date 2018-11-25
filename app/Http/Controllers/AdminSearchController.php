@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Application;
-use Auth;
-use App\Post;
-use App\Photo;
 
-class AdminAppliedController extends Controller
+use App\Application;
+use App\User;
+
+class AdminSearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,16 +17,9 @@ class AdminAppliedController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->id;
-        $post = Post::all()->where('user_id', '=', $user)->first();
-        //dd($post);
-        $applications = Application::take(50)->where('post_id', '=' , $post->id)->orderBy('experience', 'desc')->get();
-        //$applications = $applications->where('experience', '>', 2);
-        
-        return view('admin/applied', compact('applications'));
-
        
- }
+        return view('/admin/search');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +39,18 @@ class AdminAppliedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::get();
+
+        $q = Input::get('q');
+        //dd($q);
+        if($q != ""){
+            $application = Application::where('name', 'LIKE', '%' . $q . '%')
+                                        ->orWhere('email', 'LIKE', '%' . $q . '%')
+                                        ->get();
+            if(count($application) > 0)
+                return view('admin/search')->withDetails($application, $user)->withQuery($q);
+        }
+        return view('admin/search')->withMessage("No applications found");
     }
 
     /**

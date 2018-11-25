@@ -13,6 +13,12 @@ class Application extends Model
 {
     protected $fillable = [
         'experience',
+        'skill_1',
+        'skill_2',
+        'skill_3',
+        'skill_1_years',
+        'skill_2_years',
+        'skill_3_years',
         'certified',
         'name',
         'email',

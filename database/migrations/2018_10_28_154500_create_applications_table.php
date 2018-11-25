@@ -19,6 +19,12 @@ class CreateApplicationsTable extends Migration
             $table->integer('user_id')->index()->unsigned()->nullable();
             $table->integer('experience')->index()->unsigned();
             $table->string('certified');
+            $table->string('skill_1');
+            $table->string('skill_2');
+            $table->string('skill_3');
+            $table->integer('skill_1_years');
+            $table->integer('skill_2_years');
+            $table->integer('skill_3_years');
             $table->text('body');
             $table->string('name');
             $table->string('photo');
