@@ -42,13 +42,15 @@ class AdminSearchController extends Controller
         $user = User::get();
 
         $q = Input::get('q');
+        $q2 = Input::get('q2');
         //dd($q);
         if($q != ""){
-            $application = Application::where('name', 'LIKE', '%' . $q . '%')
-                                        ->orWhere('email', 'LIKE', '%' . $q . '%')
+            $applications = Application::where('skill_1', 'LIKE', '%' . $q . '%')
+                                        ->orWhere('skill_1_years', 'LIKE', '%' . $q2 . '%')
                                         ->get();
-            if(count($application) > 0)
-                return view('admin/search')->withDetails($application, $user)->withQuery($q);
+            //dd($applications);
+            if(count($applications) > 0)
+               return view('admin/search')->withDetails($applications, $user)->withQuery($q);
         }
         return view('admin/search')->withMessage("No applications found");
     }

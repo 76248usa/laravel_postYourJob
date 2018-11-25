@@ -199,12 +199,12 @@ body{
         <form class="example" action="/welcome" method="POST" role="search">
         {{ csrf_field() }}
         <div class="input-group">
-        <label for="job">What</label>
+        <label for="job"><h4>What</h4></label>
         <input type="text" class="form-control" name="q"
             placeholder="Search a job, for example, 'Pharmacist'"> <span class="input-group-btn">
         </span>
 
-        <label for="location">Where</label>
+        <label for="location"><h4>Where</h4></label>
         <input type="text" class="form-control" name="q2"
                 placeholder="Search location, for example, 'Dallas, Texas'"> <span class="input-group-btn">
 
@@ -266,8 +266,9 @@ body{
 
           <tr class="ok">
           <td class="avatar"><img src="/images/{{$post->user->photo ? $post->user->photo->file : '1540743667Avatar2.png'}}" ></td> 
-             <td>{{$post->title}}</a></td>
-             <td>{{$post->location}}</a></td>
+            
+             <td><a href="{{ route('home.post', $post->id)}}">{{$post->title}}</a></td>
+             <td>{{$post->location}}</td>
              <td>{{$post->category ? $post->category->name : 'Uncategorized'}} </td>
              <td>{{$post->user->name}} </td>
              <td>{{str_limit($post->body, 45)}} </td>           
@@ -333,6 +334,7 @@ if (btn.className == "btn"){
 
 </script>
 </html>
+
 
 
 

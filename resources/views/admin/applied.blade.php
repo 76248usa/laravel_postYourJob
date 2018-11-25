@@ -123,6 +123,11 @@ section .section-title {
     color: #007b5e !important;
 }
 
+h3 {
+    color: #007b5e !important;
+   
+}
+
 .frontside .card .card-title,
 .backside .card .card-title {
     color: #007b5e !important;
@@ -143,10 +148,9 @@ section .section-title {
 <!-- Team -->
 <section id="team" class="pb-5">
     <div class="container">
-        
-        <h5 class="section-title h1">Applications</h5>
-         
 
+        <h3  align="center";>Applications ordered by experience</h3>
+        <br>
         <div class="row">
 
 @if($applications)
