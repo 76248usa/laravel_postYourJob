@@ -63,21 +63,14 @@ overflow:hidden;
    <div class="panel-heading " style="padding:5px;">
         <div class="row">
         <div class="col col-xs-3 text-left">
-            <a href="#list" class="btn btn-default" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i>table</a>
-            <a href="#thumb" class="btn btn-default" aria-controls="thumb" role="tab" data-toggle="tab"><i class="fa fa-picture-o" aria-hidden="true"></i>card</a>
+            
         </div>
         <div class="col col-xs-5 text-center">
             <h1 class="panel-title">Post List</h1>
         </div>
-        <div class="col col-xs-2 well text-center" style="padding:1px;">    
-            <span class="label label-danger">Filter:</span>
-            <button id="ok"  class="btn btn-primary" data-class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i></button>
-            <button id="ban" class="btn btn-warning" data-class="btn btn-warning" onclick="filter('ban')"><i class="fa fa-ban" aria-hidden="true"></i></button>
-            <button id="new" class="btn btn-success" data-class="btn btn-success" onclick="filter('new')"><i class="fa fa-check-square" aria-hidden="true"></i></button> 
-        </div>
+       
         <div class="col col-xs-2 text-right ">
           
-          <a href="{{route('posts.create')}}" class="btn btn-success" title="addnew"   ><i class="fa fa-plus-square"   >Add New</i></a>
         </div>
         </div>
     </div>
@@ -118,99 +111,17 @@ overflow:hidden;
         @endif
 
 
-          <tr class="ban">
-             <td class="avatar"><img src="https://pbs.twimg.com/profile_images/3511252200/f97a40336742d17609e0b0ca17e301b8_400x400.jpeg"></td>
-             <td>Moh Aymen </td>
-             <td>Algeria </td>
-             <td>email@gmail.com </td>
-             <td align="center">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil">    	</i></a>
-               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"   >admitted</i></a>
-               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" >		</i></a>
-             </td>
-          </tr>
-          <tr class="new">
-             <td class="avatar"><img src="https://pbs.twimg.com/profile_images/3023221270/fcb34337f850c1037af9840ebe510d36_400x400.jpeg"></td>
-             <td>Dia ElHak  </td>
-             <td>Tunisia </td>
-             <td>email@gmail.com </td>
-             <td align="center">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"	  >		</i></a>
-        	   <a href="#" class="btn btn-success" title="validate"><i class="fa fa-check-square">validate</i></a>
-               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"		 >		</i></a>
-               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash"	   >		</i></a>
-              </td>
-            </tr>
+          
+         
           </tbody>
         </table>
       </div><!-- END id="list" -->
         
-      <div role="tabpanel" class="tab-pane " id="thumb">
-        <div class="row">
-        <div class="col-md-12">
-        
-        <div class="ok">
-         <div class="col-md-3">
-         <div class="panel panel-default panel-thumb">
-  			<div class="panel-heading">
-    			<h3 class="panel-title">Djelal Eddine</h3>
-  			</div>
-  			<div class="panel-body avatar-card">
-   			 <img src="https://pbs.twimg.com/profile_images/746779035720683521/AyHWtpGY_400x400.jpg">
- 			</div>
-            <div class="panel-footer">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"></i></a>
-               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"   ></i></a>
-               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" ></i></a>
-            </div>
-         </div>
-		 </div>
-       </div>
+      
       	
-        <div class="ban">
-         <div class="col-md-3">
-         <div class="panel panel-default panel-thumb">
-  			<div class="panel-heading">
-    			<h3 class="panel-title">Moh Aymen</h3>
-  			</div>
-  			<div class="panel-body avatar-card">
-   			 <img src="https://pbs.twimg.com/profile_images/3511252200/f97a40336742d17609e0b0ca17e301b8_400x400.jpeg">
- 			</div>
-            <div class="panel-footer">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil">		</i></a>
-               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"   >admitted</i></a>
-               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash" >		</i></a>
-            </div>
-         </div>
-		 </div>
-       </div>
         
-        <div class="new">
-         <div class="col-md-3">
-         <div class="panel panel-default panel-thumb">
-  			<div class="panel-heading">
-    			<h3 class="panel-title">Dia ElHak</h3>
-  			</div>
-  			<div class="panel-body avatar-card">
-   			 <img src="https://pbs.twimg.com/profile_images/3023221270/fcb34337f850c1037af9840ebe510d36_400x400.jpeg">
- 			</div>
-            <div class="panel-footer">
-               <a href="#" class="btn btn-primary" title="Edit"    ><i class="fa fa-pencil"	  >		</i></a>
-        	   <a href="#" class="btn btn-success" title="validate"><i class="fa fa-check-square">validate</i></a>
-               <a href="#" class="btn btn-warning" title="ban"	 ><i class="fa fa-ban"		 >		</i></a>
-               <a href="#" class="btn btn-danger"  title="delete"  ><i class="fa fa-trash"	   >		</i></a>
-            </div>
-         </div>
-		 </div>
-       </div>
-       
-       </div>
-      </div>
-      </div><!-- END id="thumb" -->
-       
-     </div><!-- END tab-content --> 
-    </div>
-   
+        
+        
    <div class="panel-footer text-center">
    		<ul class="pagination">
 	 	  <li ><a>«</a></li>

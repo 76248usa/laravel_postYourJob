@@ -81,11 +81,6 @@ html {
     <span style="position: absolute; color: red; bottom: 20px; left: 40px;"></span>
   </div>
 </div>
-
-    
-
-
-
       <form id="logout-form" action="#" method="POST" style="display: none;">
                                             {{ csrf_field() }}
       </form>
@@ -101,20 +96,21 @@ html {
   </div>
    <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  All Posts</a>
-    <a href="{{ route('posts.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
     
     <a href="{{ route('users.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
     
     <a href="{{ route('users.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
-    <a href="{{ route('posts.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create Post</a>
+    
+    
     <a href="{{ route('posts.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  All Posts</a>
+    <a href="{{ route('posts.create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create Post</a>
+    
     <a href="{{ route('media.index') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  All Photos</a>
     <a href="{{ route('media.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Upload Photos</a>
 
     <a href="{{route('categories.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
     <a href="{{route('applied.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications Received</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Download Resume</a>
+    <a href="/admin/search" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Search Applications</a>
     <br>
   </div>
 </nav>
@@ -130,53 +126,6 @@ html {
 
     </header> 
 
-    
-  
-
-   <!-- <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3></h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Posts</h4> 
-       </div>
-    </div> -->
-    <!-- <div class="w3-quarter">
-      <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-book w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3></h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Applications</h4>
-      </div>
-    </div>  -->
-    <!-- <div class="w3-quarter">
-      <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3></h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Categories</h4>
-      </div>
-    </div> -->
-    <!-- <div class="w3-quarter">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3></h3>
-          
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Users</h4>
-      </div>
-    </div>  -->
-
-  
   @yield('content')
 
 </div>

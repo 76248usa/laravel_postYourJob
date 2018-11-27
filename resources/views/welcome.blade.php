@@ -143,6 +143,7 @@ body{
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        
 
                     </ul>
 
@@ -169,15 +170,18 @@ body{
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
                                 </div>
                             </li>
                         @endguest
+                        
                     </ul>
+                    
                 </div>
+                <a href="/admin">Admin</a>
             </div>
         </nav>
 

@@ -117,6 +117,10 @@ body{
   font-size: 20px;
 }
 
+.topsearch {
+    display:block;
+}
+
 /*Resize the wrap to see the search bar change!*/
 .wrap{
   width: 30%;
@@ -124,6 +128,9 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+#search{
+    width: 90%;
 }
 
 </style>
@@ -193,28 +200,22 @@ body{
 
 <div class="container">
  <div class="row">
-    <div class="col-md-12">
+    
        
-        
         <form class="example" action="/admin/search" method="POST" role="search">
         {{ csrf_field() }}
-        <div class="input-group">
-        <label for="job"><h4>Skill</h4></label>
-        <input type="text" class="form-control" name="q"
-            placeholder="For example, 'Autocad'"> <span class="input-group-btn">
-        </span>
+        <h4>Search resume....</h4>
+        
+        <div class="input-group" id="search">
+        <input type="text" class="form-control" name = "q" placeholder="For example, 'Autocad'">
+        <div class="input-group-append">
+        <button class="btn w3-orange" type="submit">Go</button> 
 
-        <label for="location"><h4>Years</h4></label>
-        <input type="text" class="form-control" name="q2"
-                placeholder="For example, years experience using Autocad"> <span class="input-group-btn">
-
-        <button type="submit" class="btn w3-orange">
-            <span class="glyphicon glyphicon-search"></span>
-        </button>
-       
-        </form>
         </div>
-        </div>      
+        </div>       
+        </form>
+
+          
     </div>
     <br>
 </div>
