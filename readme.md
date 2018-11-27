@@ -4,7 +4,6 @@
 
 ![image](https://user-images.githubusercontent.com/33033309/49058526-f8d18000-f1c9-11e8-8c06-84743d2758ca.png)
 
-![image](https://user-images.githubusercontent.com/33033309/49058586-4221cf80-f1ca-11e8-9f46-e2a0fc695666.png)
 
 
 
