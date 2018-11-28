@@ -125,6 +125,9 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+button {
+    display: inline;
+}
 
 </style>
 
@@ -203,15 +206,16 @@ body{
         <form class="example" action="/welcome" method="POST" role="search">
         {{ csrf_field() }}
         <div class="input-group">
-        <label for="job"><h4>What</h4></label>
+        <h4>What</h4>
         <input type="text" class="form-control" name="q"
             placeholder="Search a job, for example, 'Pharmacist'"> <span class="input-group-btn">
         </span>
 
-        <label for="location"><h4>Where</h4></label>
+         <h4>Where</h4>
         <input type="text" class="form-control" name="q2"
                 placeholder="Search location, for example, 'Dallas, Texas'"> <span class="input-group-btn">
-
+        <h4>Search</h4> 
+          
         <button type="submit" class="btn w3-orange">
             <span class="glyphicon glyphicon-search"></span>
         </button>

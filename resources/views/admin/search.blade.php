@@ -201,19 +201,20 @@ body{
 <div class="container">
  <div class="row">
     
-       
+       <div class="col-md-12">
         <form class="example" action="/admin/search" method="POST" role="search">
         {{ csrf_field() }}
-        <h4>Search resume....</h4>
+         <h4>Search resume....</h4>
         
         <div class="input-group" id="search">
-        <input type="text" class="form-control" name = "q" placeholder="For example, 'Autocad'">
+        <input type="text" class="form-control" name = "q" placeholder="For example, 'Clinical Pharmacist'">
         <div class="input-group-append">
         <button class="btn w3-orange" type="submit">Go</button> 
 
         </div>
         </div>       
         </form>
+        </div>
 
           
     </div>
@@ -269,7 +270,7 @@ body{
           <tr class="ok">
           <td class="avatar"><img src="/images/{{$application->user->photo ? $application->user->photo->file : '1540743667Avatar2.png'}}" ></td> 
             
-             <td>{{$application->name}}</td>
+             <td><a href="{{route('applications.show', $application->id )}}">{{$application->name}}</td>
              <td>{{$application->email}}</td>
              <td>{{$application->experience}} </td>
              <td>{{$application->skill_1}} </td>

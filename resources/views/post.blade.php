@@ -52,8 +52,22 @@
          <p><img class="img-circle img-fluid" src="/images/{{Auth::user()->photo ? Auth::user()->photo->file : '1540743667Avatar2.png' }}" alt="card image"></p>
         <p>Welcome, <p><h4 class="card-title">{{Auth::user()->name}}</h4>
         <p class="card-text">{{Auth::user()->email}}</p>
-        <a href="{{ route('logout')}}" class="btn btn-primary" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa fa-plus"></i>Logout</a>
+        <a href=" {{ route('logout') }}" class="btn btn-primary" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit ();">{{ __('Logout') }}</a>
+        
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> 
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    
+                                </div>
+                                                    
 
         </div>
     </div>

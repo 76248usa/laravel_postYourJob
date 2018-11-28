@@ -22,8 +22,7 @@ class AdminAppliedController extends Controller
         $post = Post::all()->where('user_id', '=', $user)->first();
         //dd($post);
         $applications = Application::take(50)->where('post_id', '=' , $post->id)->orderBy('experience', 'desc')->get();
-        //$applications = $applications->where('experience', '>', 2);
-        
+    
         return view('admin/applied', compact('applications'));
 
        

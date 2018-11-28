@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.7/dist/sweetalert2.min.css">
 <h2>Create Post</h2>
 
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 <style>
 h2 {
     text-align: center;
@@ -40,6 +42,7 @@ h2 {
 
     <div class="form-group">
         {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+        
     </div>
 
     {{ Form::close() }}
